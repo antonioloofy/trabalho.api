@@ -38,7 +38,7 @@ body {
 
 
 #formulario_mural {
-    background: #010fd5;
+    background: #343974;
     padding: 20px;
     border-radius: 5px;
     margin-bottom: 30px;
@@ -87,7 +87,7 @@ body {
 }
 
 .recados li:first-child {
-    background: #072747;
+    background: #029691;
     padding: 10px;
     border-radius: 3px;
     margin: -15px -15px 15px -15px;
@@ -95,11 +95,11 @@ body {
 }
 
 .recados strong {
-    color: #051321;
+    color: #110707;
 }
 
 .recados a {
-    color: #eb1b04;
+    color: #f20000;
     text-decoration: none;
     margin: 0 5px;
     padding: 3px 8px;
