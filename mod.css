@@ -7,19 +7,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background: linear-gradient(to bottom, #092b9a, #764ba2);
+    height: 100vh;
     padding: 20px;
 }
 
 #main {
     max-width: 800px;
     margin: 0 auto;
-    background: white;
+    background: linear-gradient(135deg, #0250c5, #aa0391);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #header {
@@ -30,16 +29,20 @@ body {
 }
 
 #header h1 {
-    color: #2c3e50;
+    color: #0a131b;
     font-size: 28px;
 }
 
+
+
+
+
 #formulario_mural {
-    background: #f9f9f9;
+    background: #010fd5;
     padding: 20px;
     border-radius: 5px;
     margin-bottom: 30px;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #00406b;
 }
 
 #formulario_mural form {
@@ -50,7 +53,7 @@ body {
 
 #formulario_mural label {
     font-weight: bold;
-    color: #2c3e50;
+    color: #040e19;
 }
 
 #formulario_mural input[type="text"],
@@ -67,24 +70,10 @@ body {
     resize: vertical;
 }
 
-.btn {
-    background: #3498db;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
 
-.btn:hover {
-    background: #2980b9;
-}
 
 .recados {
-    background: white;
+    background: linear-gradient(135deg, #0250c5, #aa0391);
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 15px;
@@ -98,7 +87,7 @@ body {
 }
 
 .recados li:first-child {
-    background: #f8f9fa;
+    background: #072747;
     padding: 10px;
     border-radius: 3px;
     margin: -15px -15px 15px -15px;
@@ -106,16 +95,16 @@ body {
 }
 
 .recados strong {
-    color: #2c3e50;
+    color: #051321;
 }
 
 .recados a {
-    color: #e74c3c;
+    color: #eb1b04;
     text-decoration: none;
     margin: 0 5px;
     padding: 3px 8px;
     border-radius: 3px;
-    transition: background 0.3s;
+   
 }
 
 .recados a:hover {
@@ -123,15 +112,10 @@ body {
 }
 
 .recados a:first-of-type {
-    color: #3498db;
+    color: #0097fb;
 }
 
-p {
-    text-align: center;
-    padding: 30px;
-    color: #7f8c8d;
-    font-style: italic;
-}
+
 
 #footer {
     margin-top: 30px;
@@ -141,6 +125,13 @@ p {
     color: #7f8c8d;
     font-size: 14px;
 }
+
+
+
+
+
+
+
 
 /* Responsividade */
 @media (max-width: 600px) {
