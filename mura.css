@@ -1,98 +1,250 @@
-/* mod.css */
+/* Reset e configurações gerais */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #092b9a, #764ba2);
-  height: 100vh;
-  padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
 }
 
 #main {
-  max-width: 800px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, #0250c5, #aa0391);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
+#geral {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Header */
 #header {
-  text-align: center;
-  margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #eee;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 30px;
+    text-align: center;
 }
 
 #header h1 {
-  color: #0a131b;
-  font-size: 28px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 300;
 }
 
+#header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
 
-
-
-
+/* Formulário */
 #formulario_mural {
-  background: #343974;  
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 30px;
-  border-left: 4px solid #00406b;
+    padding: 40px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
 }
 
-#formulario_mural form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+#mural {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-#formulario_mural label {
-  font-weight: bold;
-  color: #040e19;
+#mural label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1rem;
 }
 
-#formulario_mural input[type="text"],
-#formulario_mural textarea {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  width: 100%;
+#mural input[type="text"],
+#mural input[type="number"],
+#mural textarea,
+#mural input[type="file"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
 }
 
-.recados {
-  background: linear-gradient(135deg, #0250c5, #aa0391);
-  border-radius: 5px;
-  padding: 15px;
-  margin-bottom: 15px;
-  list-style: none;
+#mural input[type="text"]:focus,
+#mural input[type="number"]:focus,
+#mural textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
+#mural textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#mural input[type="file"] {
+    padding: 12px;
+    background: white;
+}
+
+.btn {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+/* Container de produtos */
+.produtos-container {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Cards de produtos */
+.produto {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.produto p {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.produto strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.produto img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 15px 0;
+    border: 2px solid #e9ecef;
+    transition: transform 0.3s ease;
+}
+
+.produto:hover img {
+    transform: scale(1.02);
+}
+
+/* Footer */
+#footer {
+    background: #2c3e50;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+#footer a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+#footer a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+#footer p {
+    margin: 10px 0;
+    opacity: 0.9;
+}
+
+/* Mensagem quando não há produtos */
+.produtos-container > p {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 40px;
+    font-size: 1.3rem;
+    color: #7f8c8d;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px dashed #bdc3c7;
+}
 
 /* Responsividade */
-@media (max-width: 600px) {
-  body {
-      padding: 10px;
-  }
-  
-  #main {
-      padding: 15px;
-  }
-  
-  #header h1 {
-      font-size: 24px;
-  }
-  
-  .recados {
-      padding: 10px;
-  }
-  
-  .recados li:first-child {
-      margin: -10px -10px 10px -10px;
-  }
+@media (max-width: 768px) {
+    #main {
+        padding: 10px;
+    }
+    
+    .produtos-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    #header, #formulario_mural {
+        padding: 20px;
+    }
+    
+    #header h1 {
+        font-size: 2rem;
+    }
+    
+    .produto {
+        padding: 20px;
+    }
+    
+    #footer {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #formulario_mural {
+        padding: 15px;
+    }
+    
+    #mural input[type="text"],
+    #mural input[type="number"],
+    #mural textarea,
+    #mural input[type="file"] {
+        padding: 12px;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
 }

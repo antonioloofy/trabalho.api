@@ -1,4 +1,4 @@
-/* mod.css */
+/* Reset e configurações gerais */
 * {
     margin: 0;
     padding: 0;
@@ -6,101 +6,242 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #092b9a, #764ba2);
-    height: 100vh;
-    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
 }
 
 #main {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
-    background: linear-gradient(135deg, #0250c5, #aa0391);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+#geral {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Header */
 #header {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 30px;
     text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #eee;
 }
 
 #header h1 {
-    color: #0a131b;
-    font-size: 28px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 300;
 }
 
-
-
-
-
-#formulario_mural {
-    background: #343974;
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 30px;
-    border-left: 4px solid #00406b;
+#header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
 }
 
-#formulario_mural form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+#header a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-#formulario_mural label {
-    font-weight: bold;
-    color: #040e19;
+#header a:hover {
+    color: #2980b9;
+    text-decoration: underline;
 }
 
-#formulario_mural input[type="text"],
-#formulario_mural textarea {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+/* Container de produtos */
+.produtos-container {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+/* Cards de produtos */
+.produto {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #3498db;
+}
+
+.produto p {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.produto strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.produto img {
     width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 15px 0;
+    border: 2px solid #e9ecef;
 }
 
-#formulario_mural textarea {
+/* Botões de ação */
+.produto a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 10px 5px 0;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+}
+
+/* Botão Excluir */
+.produto a[href*="excluir"] {
+    background: #e74c3c;
+    color: white;
+}
+
+.produto a[href*="excluir"]:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* Botão Editar */
+.produto a[href*="editar"] {
+    background: #3498db;
+    color: white;
+}
+
+.produto a[href*="editar"]:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Botão Cancelar */
+.produto a[href="moderar.php"] {
+    background: #95a5a6;
+    color: white;
+}
+
+.produto a[href="moderar.php"]:hover {
+    background: #7f8c8d;
+}
+
+/* Formulário de edição */
+.produto form {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #3498db;
+}
+
+.produto input[type="text"],
+.produto input[type="number"],
+.produto textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.produto input[type="text"]:focus,
+.produto input[type="number"]:focus,
+.produto textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.produto textarea {
     min-height: 100px;
     resize: vertical;
+    font-family: inherit;
 }
 
-
-
-.recados {
-    background: linear-gradient(135deg, #0250c5, #aa0391);
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
-    list-style: none;
+.produto input[type="submit"] {
+    background: #27ae60;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
+.produto input[type="submit"]:hover {
+    background: #219a52;
+    transform: translateY(-2px);
+}
+
+/* Mensagem quando não há produtos */
+.produtos-container > p {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
 
 /* Responsividade */
-@media (max-width: 600px) {
-    body {
+@media (max-width: 768px) {
+    #main {
         padding: 10px;
     }
     
-    #main {
-        padding: 15px;
+    .produtos-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    #header {
+        padding: 20px;
     }
     
     #header h1 {
-        font-size: 24px;
+        font-size: 2rem;
     }
     
-    .recados {
-        padding: 10px;
+    .produto {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .produto a {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+        text-align: center;
     }
     
-    .recados li:first-child {
-        margin: -10px -10px 10px -10px;
+    .produto form {
+        padding: 15px;
     }
 }
