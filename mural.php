@@ -78,7 +78,7 @@ COMPARAÇÃO COM O CÓDIGO DE "ANTIGOxCLOUDINARY"
 <head>
 <meta charset="utf-8"/>
 <title>Mural de Produtos</title>
-<link rel="stylesheet" href="mural.css"/>
+<link rel="stylesheet" href="mura.css"/>
 
 <!--
 COMPARAÇÃO: No código ANTIGO/pedidos havia jQuery + jQuery Validate

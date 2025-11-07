@@ -93,7 +93,7 @@ COMPARAÇÃO:
 <head>
 <meta charset="utf-8"/>
 <title>Moderar Produtos</title>
-<link rel="stylesheet" href="mod.css"/>
+<link rel="stylesheet" href="mode.css"/>
 </head>
 <body>
 <div id="main">
