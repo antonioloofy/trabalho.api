@@ -1,14 +1,16 @@
 <?php
-include "conexao.php"; // Aqui já tem conexão MySQL + variáveis do Cloudinary ($cloud_name, $api_key, $api_secret)
+include "conexao.php";
+
 // ==========================
 // Inserir novo produto
 // ==========================
 if(isset($_POST['cadastra'])){
-    // Pegando os dados do formulário (tratamento contra SQL Injection)
+    // Pegando os dados do formulário
     $nome = mysqli_real_escape_string($conexao, $_POST['nome']);
     $descricao = mysqli_real_escape_string($conexao, $_POST['descricao']);
     $preco = floatval($_POST['preco']);
-    $imagem_url = ""; // Inicializa a variável que vai guardar a URL da imagem
+    $imagem_url = "";
+
     // --------------------------
     // Upload da imagem para Cloudinary
     // --------------------------
@@ -44,74 +46,34 @@ if(isset($_POST['cadastra'])){
     }
 
     // ==========================
-    // Inserindo no banco de dados
+    // Inserindo no banco de dados LOJA_PRODUTOS
     // ==========================
     if($imagem_url != ""){
         $sql = "INSERT INTO produtos (nome, descricao, preco, imagem_url) VALUES ('$nome', '$descricao', $preco, '$imagem_url')";
         mysqli_query($conexao, $sql) or die("Erro ao inserir: " . mysqli_error($conexao));
     }
 
-    // ==========================
-    // REDIRECIONAMENTO
-    // ==========================
     header("Location: mural.php");
     exit;
 }
-
-/* 
-==================================================
-COMPARAÇÃO COM O CÓDIGO DE "ANTIGOxCLOUDINARY"
-==================================================
-- Tabela usada: recados (nome, email, mensagem)
-- Campos do formulário: nome, email, msg
-- Não tem upload de imagem, nem Cloudinary
-- Inserção SQL: INSERT INTO recados (nome, email, mensagem)
-- Validação adicional no front-end usando jQuery Validate
-- Exibição: <ul> ao invés de <div>, apenas texto, sem preço ou imagem
-- Código mais simples e voltado a mensagens
-==================================================
-*/
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="utf-8"/>
-<title>Mural de Produtos</title>
+<title>Loja de Produtos</title>
 <link rel="stylesheet" href="mura.css"/>
-
-<!--
-COMPARAÇÃO: No código ANTIGO/pedidos havia jQuery + jQuery Validate
-<script src="scripts/jquery.js"></script>
-<script src="scripts/jquery.validate.js"></script>
-<script>
-$(document).ready(function() {
-    $("#mural").validate({
-        rules: {
-            nome: { required: true, minlength: 4 },
-            email: { required: true, email: true },
-            msg: { required: true, minlength: 10 }
-        },
-        messages: {
-            nome: { required: "Digite o seu nome", minlength: "O nome deve ter no mínimo 4 caracteres" },
-            email: { required: "Digite o seu e-mail", email: "Digite um e-mail válido" },
-            msg: { required: "Digite sua mensagem", minlength: "A mensagem deve ter no mínimo 10 caracteres" }
-        }
-    });
-});
-</script>
--->
 </head>
 <body>
 <div id="main">
     <div id="geral">
         <div id="header">
-            <h1>Mural de Produtos</h1>
+            <h1>Loja de Produtos</h1>
+            <p>Banco: loja_produtos</p>
         </div>
 
-        <!-- ==========================
-        FORMULÁRIO
-        ========================== -->
+        <!-- FORMULÁRIO -->
         <div id="formulario_mural">
             <form id="mural" method="post" enctype="multipart/form-data">
                 <label>Nome do produto:</label>
@@ -130,37 +92,32 @@ $(document).ready(function() {
             </form>
         </div>
 
-        <!-- ==========================
-        LISTA DE PRODUTOS
-        ========================== -->
+        <!-- LISTA DE PRODUTOS -->
         <div class="produtos-container">
         <?php
         $seleciona = mysqli_query($conexao, "SELECT * FROM produtos ORDER BY id DESC");
-        while($res = mysqli_fetch_assoc($seleciona)){
-            echo '<div class="produto">';
-            echo '<p><strong>ID:</strong> ' . $res['id'] . '</p>';
-            echo '<p><strong>Nome:</strong> ' . htmlspecialchars($res['nome']) . '</p>';
-            echo '<p><strong>Preço:</strong> R$ ' . number_format($res['preco'], 2, ',', '.') . '</p>';
-            echo '<p><strong>Descrição:</strong> ' . nl2br(htmlspecialchars($res['descricao'])) . '</p>';
-            echo '<img src="' . htmlspecialchars($res['imagem_url']) . '" alt="' . htmlspecialchars($res['nome']) . '">';
-            echo '</div>';
+        
+        if(mysqli_num_rows($seleciona) > 0) {
+            while($res = mysqli_fetch_assoc($seleciona)){
+                echo '<div class="produto">';
+                echo '<p><strong>ID:</strong> ' . $res['id'] . '</p>';
+                echo '<p><strong>Nome:</strong> ' . htmlspecialchars($res['nome']) . '</p>';
+                echo '<p><strong>Preço:</strong> R$ ' . number_format($res['preco'], 2, ',', '.') . '</p>';
+                echo '<p><strong>Descrição:</strong> ' . nl2br(htmlspecialchars($res['descricao'])) . '</p>';
+                echo '<img src="' . htmlspecialchars($res['imagem_url']) . '" alt="' . htmlspecialchars($res['nome']) . '">';
+                echo '</div>';
+            }
+        } else {
+            echo '<p>Nenhum produto cadastrado no banco "loja_produtos".</p>';
         }
-
-        /*
-        COMPARAÇÃO: Código antigo x cloudinary
-        - Exibe em <ul class="recados"> cada recado
-        - Mostra nome, email e mensagem
-        - Não há imagem, preço ou descrição longa
-        */
-
         ?>
         </div>
 
         <div id="footer">
-            <p>Mural - Cloudinary & PHP</p>
-            <!-- No código anterior, o footer estava vazio -->
+            <p><a href="moderar.php">Moderar Produtos</a></p>
+            <p>Banco: loja_produtos | Cloudinary & PHP</p>
         </div>
     </div>
 </div>
 </body>
-</html>      
+</html>
